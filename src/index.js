@@ -30,7 +30,6 @@ inputCountry.addEventListener('keyup',
             }
         })
             .catch(error => {
-                console.log(error, 'Oops, there is no country with that name');
                 Notiflix.Notify.failure('Oops, there is no country with that name');
                 resetMarkup(countryInfo, countryList)
             })
@@ -63,7 +62,6 @@ function markupList(countries) {
 
 function markupInfo(countries) {
     const country = countries[0];
-    console.log(country.languages)
     const info = `<div class="country-info__inner">
             <img src=${country.flags.png} width="50">
             <span class="country-name__big">${country.name.official}</span>

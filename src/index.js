@@ -1,6 +1,6 @@
 import './css/styles.css';
 import Notiflix from 'notiflix';
-import fetchCountries from './js/fetchCountries';
+// import fetchCountries from './js/fetchCountries';
 const debounce = require('lodash.debounce');
 
 const DEBOUNCE_DELAY = 300;
@@ -20,6 +20,7 @@ inputCountry.addEventListener('keyup',
         //     Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
         //     return
         // }
+      
 
         fetchCountries(nameOfCountry).then(data => {
         if (data.length === 1) {
@@ -76,5 +77,9 @@ function markupInfo(countries) {
     
         countryInfo.insertAdjacentHTML('beforeend', info)
 };
+
+function fetchCountries(name) {
+    fetch(`${URL}${name}${filter}`).then(responce => responce.json())
+}
 
 

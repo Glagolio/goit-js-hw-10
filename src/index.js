@@ -62,7 +62,7 @@ function markupList(countries) {
 };
 
 function markupInfo(countries) {
-    country = countries[0];
+    const country = countries[0];
     console.log(country.languages)
     const info = `<div class="country-info__inner">
             <img src=${country.flags.png} width="50">

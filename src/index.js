@@ -14,27 +14,28 @@ inputCountry.addEventListener('keyup',
         if (nameOfCountry.length === 0) {
             resetMarkup(countryInfo, countryList)
             return
-        }
+        };
 
         fetchCountries(nameOfCountry).then(data => {
-        if (data.length === 1) {
-            resetMarkup(countryInfo, countryList)
-            markupInfo(data);
-        } else if (data.length > 1 && data.length <= 10) {
-            resetMarkup(countryInfo, countryList)
-            markupList(data);            
-        }
-        else {
-            resetMarkup(countryInfo, countryList);
-            Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');}
+            if (data.length === 1) {
+                resetMarkup(countryInfo, countryList)
+                markupInfo(data);
+            } else if (data.length > 1 && data.length <= 10) {
+                resetMarkup(countryInfo, countryList)
+                markupList(data);
+            }
+            else {
+                resetMarkup(countryInfo, countryList);
+                Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
+            }
         })
-        .catch(error => {
-            console.log(error, 'Oops, there is no country with that name');
-            Notiflix.Notify.failure('Oops, there is no country with that name');
-            resetMarkup(countryInfo, countryList)
-        })
+            .catch(error => {
+                console.log(error, 'Oops, there is no country with that name');
+                Notiflix.Notify.failure('Oops, there is no country with that name');
+                resetMarkup(countryInfo, countryList)
+            })
 
-    }, DEBOUNCE_DELAY))
+    }, DEBOUNCE_DELAY));
 
 
 
@@ -42,7 +43,7 @@ inputCountry.addEventListener('keyup',
 function resetMarkup(info, list) {
     info.innerHTML = '';
     list.innerHTML = '';
-}
+};
 
 
 function markupList(countries) {
@@ -58,7 +59,7 @@ function markupList(countries) {
     });
 
     
-}
+};
 
 function markupInfo(countries) {
     country = countries[0];

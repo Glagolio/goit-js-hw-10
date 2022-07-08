@@ -1,6 +1,6 @@
 import './css/styles.css';
 import Notiflix from 'notiflix';
-// import fetchCountries from './js/fetchCountries';
+import fetchCountries from './js/fetchCountries';
 const debounce = require('lodash.debounce');
 
 const DEBOUNCE_DELAY = 300;
@@ -29,10 +29,10 @@ inputCountry.addEventListener('keyup',
         } if (data.length <= 10) {
             resetMarkup(countryInfo, countryList)
             markupList(data);            
-            } else {
-            resetMarkup(countryInfo, countryList);
-            Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
         }
+        else {
+            resetMarkup(countryInfo, countryList);
+            Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');}
         })
         .catch(error => {
             console.log(error, 'Oops, there is no country with that name');
@@ -78,8 +78,6 @@ function markupInfo(countries) {
         countryInfo.insertAdjacentHTML('beforeend', info)
 };
 
-function fetchCountries(name) {
-    fetch(`${URL}${name}${filter}`).then(responce => responce.json())
-}
+
 
 
